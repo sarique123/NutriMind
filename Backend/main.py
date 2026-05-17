@@ -34,6 +34,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # --- Input models ---
 class StressPredictionInput(BaseModel):
     Sleep_Quality: float
@@ -41,6 +42,7 @@ class StressPredictionInput(BaseModel):
     Academic_Performance: float
     Study_Load: float
     Extracurricular_Activities: float
+
 
 def input_frame_call(input_data: StressPredictionInput) -> str:
     weights = np.array([-2, 2, -1, 2, -1])
@@ -52,6 +54,7 @@ def input_frame_call(input_data: StressPredictionInput) -> str:
         input_data.Extracurricular_Activities
     ])
     
+
     score = np.dot(weights, features)  # Matrix dot product
 
     thresholds = [
@@ -62,17 +65,20 @@ def input_frame_call(input_data: StressPredictionInput) -> str:
         (7, np.inf, "Extreme")
     ]
     
+
     for lower, upper, label in thresholds:
         if lower < score <= upper:
             return label
 
     return "Unknown"
 
+
 class RecipeRecommendationInput(BaseModel):
     ingredients: list[str] = []
     exclude: list[str] = []
     is_non_veg: bool | None = None
     n_meals: int = 5
+
 
 # --- Mappings ---
 feature_names = [
@@ -90,6 +96,7 @@ stress_levels = {
     3: 'Very High',
     4: 'Extreme'
 }
+
 
 # --- Routes ---
 @app.post("/predict-stress-level/")
@@ -111,6 +118,7 @@ async def predict_stress_level(input_data: StressPredictionInput):
         return {"predicted_stress_level": predicted_stress_level}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
+
 
 @app.post("/recommend-recipes/")
 async def recommend_recipes(input_data: RecipeRecommendationInput):
