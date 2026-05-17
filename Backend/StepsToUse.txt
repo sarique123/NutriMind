@@ -1,0 +1,4 @@
+conda init
+conda create -n myenv python=3.11
+conda activate myenv
+uvicorn main:app --reload
