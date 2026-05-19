@@ -88,14 +88,14 @@ Model gives suggestions like:
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/lifestyle-recommender.git
-cd lifestyle-recommender
+git clone https://github.com/sarique123/NutriMind.git
+cd NutriMind
 ```
 
 ### 2. Start Backend
 
 ```bash
-cd server
+cd Backend
 npm install
 npm start
 ```
@@ -103,7 +103,7 @@ npm start
 ### 3. Start Frontend
 
 ```bash
-cd client
+cd frontend
 npm install
 npm run dev
 ```
@@ -116,15 +116,6 @@ npm run dev
 - Notification/reminder system
 - Smart watch or wearable device support
 - Gamified experience with rewards
-
----
-
-## 👥 Contributors
-
-- Jashanprit Singh  
-- Saqib Ali  
-- Lav Kumar  
-- Vinay Dahariya
 
 ---
 
